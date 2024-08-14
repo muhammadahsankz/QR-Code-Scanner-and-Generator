@@ -1,7 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
-class ScanQRCode extends StatelessWidget {
+class ScanQRCode extends StatefulWidget {
   const ScanQRCode({super.key});
+
+  @override
+  State<ScanQRCode> createState() => _ScanQRCodeState();
+}
+
+class _ScanQRCodeState extends State<ScanQRCode> {
+  String qrResult = "\"Scanned data will appear here\"";
+
+  Future<void> scanQR() async {
+    try {
+      final qrCode = await FlutterBarcodeScanner.scanBarcode(
+          '#ff6666', 'Cancel', true, ScanMode.QR);
+      if (!mounted) return;
+      setState(() {
+        this.qrResult = qrCode.toString();
+      });
+    } on PlatformException {
+      qrResult = 'Failed to read QR Code';
+    } catch (error) {
+      qrResult = 'Failed to read QR Code';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -10,6 +34,39 @@ class ScanQRCode extends StatelessWidget {
         title: Text('Scan QR Code'),
         backgroundColor: Colors.green,
         centerTitle: true,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(height: 200, 'assets/images/scanner.png'),
+            SizedBox(height: 30),
+            Text(
+              qrResult == '-1' ? "\"Scanned data will appear here\"" : qrResult,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+            SizedBox(height: 30),
+            GestureDetector(
+              onTap: () {
+                scanQR();
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                decoration: BoxDecoration(
+                  color: Colors.greenAccent,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Text(
+                  'Scan QR Code',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

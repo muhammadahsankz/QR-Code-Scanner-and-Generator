@@ -14,7 +14,7 @@ class _GenerateQRCodeState extends State<GenerateQRCode> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Generate QR Code'),
+        title: const Text('Generate QR Code'),
         backgroundColor: Colors.green,
         centerTitle: true,
       ),
@@ -23,7 +23,7 @@ class _GenerateQRCodeState extends State<GenerateQRCode> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
+              SizedBox(
                   height: 200,
                   width: 200,
                   child: urlController.text.isNotEmpty
@@ -32,14 +32,15 @@ class _GenerateQRCodeState extends State<GenerateQRCode> {
                           size: 200,
                         )
                       : Image.asset('assets/images/generator.png')),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: TextFormField(
                   controller: urlController,
                   decoration: InputDecoration(
                       contentPadding:
-                          EdgeInsets.only(left: 30, top: 20, bottom: 20),
+                          const EdgeInsets.only(left: 30, top: 20, bottom: 20),
                       hintText: 'Enter something to convert...',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
@@ -47,18 +48,19 @@ class _GenerateQRCodeState extends State<GenerateQRCode> {
                       labelText: 'Enter something to convert...'),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
                   setState(() {});
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   decoration: BoxDecoration(
                     color: Colors.greenAccent,
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Generate QR Code',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),

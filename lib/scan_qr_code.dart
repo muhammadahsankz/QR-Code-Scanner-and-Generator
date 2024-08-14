@@ -18,7 +18,7 @@ class _ScanQRCodeState extends State<ScanQRCode> {
           '#ff6666', 'Cancel', true, ScanMode.QR);
       if (!mounted) return;
       setState(() {
-        this.qrResult = qrCode.toString();
+        qrResult = qrCode.toString();
       });
     } on PlatformException {
       qrResult = 'Failed to read QR Code';
@@ -31,7 +31,7 @@ class _ScanQRCodeState extends State<ScanQRCode> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Scan QR Code'),
+        title: const Text('Scan QR Code'),
         backgroundColor: Colors.green,
         centerTitle: true,
       ),
@@ -40,26 +40,26 @@ class _ScanQRCodeState extends State<ScanQRCode> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(height: 200, 'assets/images/scanner.png'),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Text(
               qrResult == '-1' ? "\"Scanned data will appear here\"" : qrResult,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             GestureDetector(
               onTap: () {
                 scanQR();
               },
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 decoration: BoxDecoration(
                   color: Colors.greenAccent,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: Text(
+                child: const Text(
                   'Scan QR Code',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),

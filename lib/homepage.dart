@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('QR Code Scanner & Generator'),
+          title: const Text('QR Code Scanner & Generator'),
           backgroundColor: Colors.green,
           centerTitle: true,
         ),
@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ScanQRCode()));
+                              builder: (context) => const ScanQRCode()));
                     },
                     child: Container(
                       height: 200,
@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
                             'assets/images/scanner.png',
                             height: 150,
                           ),
-                          Text(
+                          const Text(
                             'Scan QR Code',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
@@ -48,13 +48,13 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => GenerateQRCode()));
+                              builder: (context) => const GenerateQRCode()));
                     },
                     child: Container(
                       height: 200,
@@ -69,7 +69,7 @@ class HomePage extends StatelessWidget {
                             'assets/images/generator.png',
                             height: 150,
                           ),
-                          Text(
+                          const Text(
                             'Generate QR Code',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
